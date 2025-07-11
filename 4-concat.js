@@ -1,4 +1,1 @@
-const x = "Python";
-const y = "fun";
-
-console.log(x + " is " + y);
+console.log(process.argv[2] + " is " + process.argv[3]);
