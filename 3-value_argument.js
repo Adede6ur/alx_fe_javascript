@@ -1,8 +1,5 @@
-if(process.argv.length < 1)
-console.log("No args")
-else if(process.argv.length === 1) {
-    console.log("Argument found");
-}
-else if(process.argv.length >= 1){
-    console.log("Arguments found")
+if (process.argv[2] === undefined) {
+  console.log("No argument");
+} else {
+  console.log(process.argv[2]);
 }
