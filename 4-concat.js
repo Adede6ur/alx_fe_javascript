@@ -1,6 +1,4 @@
-const print = function (x,y ) {
-    console.log(`x: ${x}`);
-    console.log(`y: ${y}`);
-}
+const x = "Python";
+const y = "fun";
 
-print("Hello", "World");
+console.log(x + " is " + y);
