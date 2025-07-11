@@ -1,14 +1,11 @@
+// This script prints a message based on number of arguments passed
 
-    console.log(process.argv);
-    
-    // if (process.argv.length == 2) { console.log("No args"); }
-    // if (process.argv.length == 3) { console.log("One arg passed"); }
-    // if (process.argv.length >= 4) { console.log("More than one arg was passed"); }  
+const args = process.argv;
 
-    if (process.argv.length == 2) { 
-        console.log("No args");
-     } else if (process.argv.length == 3) {
-        console.log("One arg passed");
-     } else if (process.argv.length >= 4) {
-        console.log("More than one arg was passed");
-     }
+if (args[2] === undefined) {
+  console.log("No argument");
+} else if (args[3] === undefined) {
+  console.log("Argument found");
+} else {
+  console.log("Arguments found");
+}
