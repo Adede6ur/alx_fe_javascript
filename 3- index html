@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang"en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY TO -DO LIST</title>
+    <head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .what-we-do {
+            margin: 20px;
+        }
+        .what-we-do h1 {
+            color: #333;
+        }
+        .what-we-do ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .what-we-do li {
+            margin: 10px 0;
+        }
+    </style>
+    ul [list-style-type: none; padding: 0;]
+    li {padding:8px; margin: 5px 0; background-color: #f4f4f4; border-radius: 4px;<button>margin-left:10 px</button>
+    <hi>TO-do-list</hi>
+    <input type="text"id =task input
+    <button id="add-task">Add Task</button>
+    <ul id="task list>"</ul>
+    <script src="to do list.js'></script>
+    <div class="what-we-do">
+        
+        </script src="to-do-list.js"></script>
+        <h1>What We Do</h1>
+        <input type ="text" id="task input."
+        <button id="add-task">Add Task</button>
+        <ul id="task-list">
+            <li>Consulting</li>
+            <li>Development</li>
+            <li>Support</li>
+            <li>Marketing</li>
+        </ul> id="task-list"</ul>
+        </body>
+</html>
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    "
