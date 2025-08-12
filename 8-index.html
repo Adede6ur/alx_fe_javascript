@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hamburger Menu Example</title>
+  <style>
+    /* --- Basic reset --- */
+    * {box-sizing: border-box; margin: 0; padding: 0}
+    html,body {height:100%}
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      line-height: 1.4;
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    /* --- Nav container --- */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: white;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      position: relative;
+      z-index: 20;
+    }
+
+    .brand {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* --- Hamburger button --- */
+    .hamburger {
+      width: 44px;
+      height: 44px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    .hamburger:focus {
+      outline: 3px solid rgba(59,130,246,0.25);
+      outline-offset: 2px;
+    }
+
+    .hamburger .bars {
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      position: relative;
+      transition: transform 220ms ease;
+    }
+    .hamburger .bars::before,
+    .hamburger .bars::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: currentColor;
+      transition: transform 220ms ease, top 220ms ease, opacity 220ms ease;
+    }
+    .hamburger .bars::before { top: -7px; }
+    .hamburger .bars::after  { top: 7px; }
+
+    /* Transform to X when open (button has .is-open) */
+    .hamburger.is-open .bars {
+      transform: rotate(45deg);
+    }
+    .hamburger.is-open .bars::before {
+      top: 0;
+      transform: rotate(90deg);
+    }
+    .hamburger.is-open .bars::after {
+      opacity: 0;
+      transform: translateX(6px);
+    }
+
+    /* --- Menu panel (mobile) --- */
+    .menu {
+      position: absolute;
+      top: 100%;
+      right: 1rem;
+      width: min(320px, 90vw);
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+      padding: 0.5rem;
+      transform-origin: top right;
+      visibility: hidden;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 180ms ease, transform 180ms ease, visibility 0ms linear 180ms;
+    }
+    .menu.open {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+      transition-delay: 0s;
+    }
+
+    .menu a {
+      display: block;
+      padding: 0.7rem 0.9rem;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 6px;
+    }
+    .menu a:hover, .menu a:focus {
+      background: rgba(59,130,246,0.06);
+      outline: none;
+    }
+
+    /* --- Desktop menu (always visible on larger screens) --- */
+    .menu-desktop {
+      display: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .menu-desktop a {
+      padding: 0.4rem 0.65rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .menu-desktop a:hover, .menu-desktop a:focus {
+      background: rgba(0,0,0,0.05);
+    }
+
+    /* Responsive: show desktop menu at 768px+ */
+    @media (min-width: 768px) {
+      .hamburger { display: none; } /* hide hamburger on desktop */
+      .menu { position: static; visibility: visible; opacity: 1; transform: none; box-shadow: none; background: transparent; padding: 0; width: auto; }
+      .menu-desktop { display: flex; }
+    }
+
+    /* small page content for demo */
+    main { padding: 2rem 1rem; max-width: 900px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <header class="nav" role="navigation" aria-label="Main navigation">
+    <div class="brand">My Site</div>
+
+    <!-- Desktop links (visible on wide screens) -->
+    <nav class="menu-desktop" aria-hidden="true">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hamburger button -->
+    <button id="hambtn" class="hamburger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+      <span class="bars" aria-hidden="true"></span>
+    </button>
+
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="menu" role="menu" aria-labelledby="hambtn">
+      <a role="menuitem" href="#home">Home</a>
+      <a role="menuitem" href="#features">Features</a>
+      <a role="menuitem" href="#pricing">Pricing</a>
+      <a role="menuitem" href="#about">About</a>
+      <a role="menuitem" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Hamburger Menu Demo</h1>
+    <p>This is a small demo page showing a responsive hamburger menu. Resize the window to see the desktop links or the hamburger appear.</p>
+  </main>
+
+  <script>
+    // Accessible toggling for hamburger + menu
+    (function(){
+      const btn = document.getElementById('hambtn');
+      const menu = document.getElementById('mobile-menu');
+
+      function openMenu() {
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-label', 'Close menu');
+        menu.classList.add('open');
+      }
+      function closeMenu() {
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Open menu');
+        menu.classList.remove('open');
+      }
+
+      // Toggle on click
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeMenu(); else openMenu();
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Optional: close menu when a link is activated (good for single-page behavior)
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => closeMenu());
+      });
+
+      // Keep menu state in sync on resize (if switching to desktop)
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          // desktop view: ensure no open state hangs around
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
