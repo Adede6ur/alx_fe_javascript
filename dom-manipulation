@@ -63,7 +63,7 @@
       } else {
         alert("Please enter a quote.");
       }
-    }
+    
 
     // ======================
     // Export to JSON File
@@ -76,7 +76,7 @@
       a.download = 'quotes.json';
       a.click();
       URL.revokeObjectURL(url);
-    }
+    
 
     // ======================
     // Import from JSON File
@@ -90,14 +90,14 @@
             ('Quotes imported successfully!');
           } else {
             alert('Invalid JSON format.');
-          }
+          
         } catch (error) {
           alert('Error reading JSON file.');
-        }
+        
       };
       fileReader.readAsText(event.target.files[0]);
-    }
+    
   </script>
-</body>
+
 </html>
  
