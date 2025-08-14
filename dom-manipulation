@@ -1,15 +1,14 @@
-<!DOCTYPE html>
+<!dopctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
+
+   charset="UTF-8"
+  <meta name="viewport" content="width=device-width, initial-scale=1.0
   <title>Dynamic Quote Generator</title>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
   
-  <div id="quoteDisplay"></div>
-
-  <input type="text" id="newQuote" placeholder="Enter a new quote">
+  <div id="quoteDispla id="newQuote" placeholder="Enter a new quote">
   <button onclick="addQuote()">Add Quote</button>
   <button onclick="showRandomQuote()">Show Random Quote</button>
   <button onclick="exportToJsonFile()">Export Quotes (JSON)</button>
@@ -43,7 +42,7 @@
     // Show Random Quote
     // ======================
     function showRandomQuote() {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
+     randomIndex = Math.floor(Math.random() * quotes.length);
       const randomQuote = quotes[randomIndex];
       document.getElementById('quoteDisplay').textContent = randomQuote;
 
@@ -55,7 +54,7 @@
     // Add New Quote
     // ======================
     function addQuote() {
-      const newQuote = document.getElementById('newQuote').value.trim();
+      newQuote = document.getElementById('newQuote').value.trim();
       if (newQuote) {
         quotes.push(newQuote);
         saveQuotes();
@@ -70,7 +69,7 @@
     // Export to JSON File
     // ======================
     function exportToJsonFile() {
-      const blob = new Blob([JSON.stringify(quotes, null, 2)], { type: 'application/json' });
+       blob = new Blob([JSON.stringify(quotes, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -83,14 +82,12 @@
     // Import from JSON File
     // ======================
     function importFromJsonFile(event) {
-      const fileReader = new FileReader();
-      fileReader.onload = function(e) {
-        try {
-          const importedQuotes = JSON.parse(e.target.result);
-          if (Array.isArray(importedQuotes)) {
-            quotes.push(...importedQuotes);
-            saveQuotes();
-            alert('Quotes imported successfully!');
+      
+      fileReader.onload = function(
+           (Array.isArray(importedQuotes)) {
+            quotes.push(...importedQuotes)
+            
+            ('Quotes imported successfully!');
           } else {
             alert('Invalid JSON format.');
           }
@@ -103,3 +100,4 @@
   </script>
 </body>
 </html>
+ 

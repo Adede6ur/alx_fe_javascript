@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>creating dynamic content filtering system using web storage and json</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <
+script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<p>this is my first javascript page</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.
+7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.
+0.11/handlebars.min.js"></script>
+</body>
+<body>
+<script id="entry-template" type="text/x-handlebars-template">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="{{image}}" alt="{{title}}">
+            <div class="caption">
+                <h3>{{title}}</h3>
+                <p>{{description}}</p>
+                <p><a href="#" class="btn btn-primary" role="button">View details</a></p>
+            </div>
+        </div>
+    </body>
+
+</div>
+</script>
+<script>
+    $(document).ready(function() {
+        var source = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+
+        var context = {
+            image: "https://via.placeholder.com/150",
+            title: "Sample Item",
+            description: "This is a sample item description."
+        };
+
+        var html = template(context);
+        $("body").append(html);
+        $("body").append("<p>Dynamic content added using Handlebars.js</p>")
+        $("body").append("<p>jQuery is working!</p>")
+        
